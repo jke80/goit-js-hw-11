@@ -11,12 +11,13 @@ export class Pixabay {
   #page;
   #searchQuery;
   #totalHits;
+  #per_page;
   constructor() {
     this.#page = 1;
     this.#searchQuery = '';
     this.#API_KEY = '9908260-97928272ad9de5d3030a89b8a';
     this.#URL = 'https://pixabay.com/api/';
-    this.per_page = 40;
+    this.#per_page = 40;
     this.#totalHits = 500;
   }
 
@@ -27,8 +28,8 @@ export class Pixabay {
       image_type: 'photo',
       orientation: 'horizontal',
       safesearch: true,
-      per_page: this.per_page,
-      page: this.page,
+      per_page: this.#per_page,
+      page: this.#page,
     };
 
     const response = await axios.get(this.#URL, { params });
@@ -44,7 +45,7 @@ export class Pixabay {
   }
 
   nextPage() {
-    if (this.#page * this.per_page >= this.#totalHits) {
+    if (this.#page * this.#per_page >= this.#totalHits) {
       throw new Error(
         "We're sorry, but you've reached the end of search results."
       );
