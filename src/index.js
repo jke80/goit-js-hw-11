@@ -9,16 +9,6 @@ import { Pixabay } from './pixabay-api';
 import { createMarkup } from './create-markup';
 import { catchError } from './catch-error';
 
-const galleryLightbox = new SimpleLightbox('.link', {
-  captionsData: 'alt',
-  captionDelay: 250,
-  captionPosition: 'bottom',
-});
-
-console.log(galleryLightbox);
-
-galleryLightbox.on('show.simplelightbox');
-
 const pixabay = new Pixabay();
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.search-form');
@@ -44,6 +34,14 @@ async function handleSubmit(event) {
     Notify.info(`Hooray! We found ${data.totalHits} images.`);
     gallery.innerHTML = createMarkup(data.hits);
     observer.observe(target);
+
+    const galleryLightbox = new SimpleLightbox('.link', {
+      captionsData: 'alt',
+      captionDelay: 250,
+      captionPosition: 'bottom',
+    });
+
+    galleryLightbox.on('show.simplelightbox');
   } catch (error) {
     catchError(error);
   }
@@ -57,6 +55,16 @@ async function handleObserve(event) {
     pixabay.nextPage();
     const data = await pixabay.getPhotos();
     gallery.insertAdjacentHTML('beforeend', createMarkup(data.hits));
+
+    const galleryLightbox = new SimpleLightbox('.link', {
+      captionsData: 'alt',
+      captionDelay: 250,
+      captionPosition: 'bottom',
+    });
+
+    console.log(galleryLightbox);
+
+    galleryLightbox.on('show.simplelightbox');
   } catch (error) {
     catchError(error);
   }
