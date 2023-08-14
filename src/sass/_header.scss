@@ -6,7 +6,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ghostwhite;
-  border-bottom: solid 1px gray;
-  padding: 20px;
+  background-color: white;
+  padding: 10px;
+
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
 }

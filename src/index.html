@@ -10,12 +10,17 @@
     <header class="page-header">
       <form class="search-form" id="search-form">
         <input
+          class="search-input"
           type="text"
           name="searchQuery"
           autocomplete="off"
           placeholder="Search images..."
         />
-        <button type="submit">Search</button>
+        <button class="search-button" type="submit">
+          <svg class="button-icon" width="24" height="24">
+            <use href="./images/search.svg#search"></use>
+          </svg>
+        </button>
       </form>
     </header>
     <main>
